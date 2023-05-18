@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+  margin: 50px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.form-container {
+  margin-bottom: 20px;
+}
+
+.books-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-item {
+  margin-bottom: 10px;
+}
+
+input[type='text'],
+button {
+  margin: 5px;
+}
+
+button {
+  padding: 5px 10px;
+}

@@ -13,7 +13,7 @@ function App() {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get('http://backend-service/api/books');
+      const response = await axios.get('http://localhost/api/books');
       setBooks(response.data);
     } catch (error) {
       console.error('Error fetching books:', error);
@@ -22,7 +22,7 @@ function App() {
 
   const createBook = async () => {
     try {
-      const response = await axios.post('http://backend-service/api/books', {
+      const response = await axios.post('http://localhost/api/books', {
         title,
         author,
       });
@@ -37,7 +37,7 @@ function App() {
   const updateBook = async (bookId, newTitle, newAuthor) => {
     try {
       const response = await axios.put(
-        `http://backend-service/api/books/${bookId}`,
+        `http://localhost/api/books/${bookId}`,
         {
           title: newTitle,
           author: newAuthor,
@@ -54,7 +54,7 @@ function App() {
 
   const deleteBook = async (bookId) => {
     try {
-      await axios.delete(`http://backend-service/api/books/${bookId}`);
+      await axios.delete(`http://localhost/api/books/${bookId}`);
       const updatedBooks = books.filter((book) => book.id !== bookId);
       setBooks(updatedBooks);
     } catch (error) {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import "./App.css";
+import './App.css';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -13,7 +13,7 @@ function App() {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get('http://localhost/backend/api/books');
+      const response = await axios.get(process.env.REACT_APP_API_URL);
       setBooks(response.data);
     } catch (error) {
       console.error('Error fetching books:', error);
@@ -22,7 +22,7 @@ function App() {
 
   const createBook = async () => {
     try {
-      const response = await axios.post('http://localhost/backend/api/books', {
+      const response = await axios.post(process.env.REACT_APP_API_URL, {
         title,
         author,
       });
@@ -37,7 +37,7 @@ function App() {
   const updateBook = async (bookId, newTitle, newAuthor) => {
     try {
       const response = await axios.put(
-        `http://localhost/backend/api/books/${bookId}`,
+        `${process.env.REACT_APP_API_URL}/${bookId}`,
         {
           title: newTitle,
           author: newAuthor,
@@ -54,7 +54,7 @@ function App() {
 
   const deleteBook = async (bookId) => {
     try {
-      await axios.delete(`http://localhost/backend/api/books/${bookId}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/${bookId}`);
       const updatedBooks = books.filter((book) => book.id !== bookId);
       setBooks(updatedBooks);
     } catch (error) {
@@ -65,6 +65,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="title">Library App</h1>
+      <h2>Running in: {process.env.NAME_OF_ENV}</h2>
       <div className="form-container">
         <h2>Add a Book</h2>
         <input

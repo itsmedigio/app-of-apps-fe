@@ -13,6 +13,8 @@ RUN npm i
 # Copy the entire project to the working directory
 COPY . .
 
+COPY .env.prod .env
+
 # Build the React app
 RUN npm run build
 
